@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TimeyWimey </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/styles/newtimey.css">
+<link rel="stylesheet" href="/styles/normalize.css">
+<link rel="stylesheet" href="/styles/gallery.css">
+<link rel="icon" type='image/x-icon' href="/faviconTardis.ico" sizes="32x32">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body onload="hideBanner()">
+
+	<nav class="nav-color" id="navbar">
+		<a href="/">
+			<img decoding="async" src="/images/tardisLogo.png" class="img-logo" id="logo">
+		</a>
+		<div class="nav__elements">
+			<a class="nav__elements__a-select" href="/aemet" > AEMET</a>
+			<a class="nav__elements__a" href="/app" > APP</a>
+			<a class="nav__elements__a" href="/galeria" > GALERIA</a>
+			<a class="nav__elements__a" href="/otro"> OTRO</a>
+		</div>
+		<button class="button-tienda color-tardisBlue">Tienda</button>
+	</nav>
+
+	<nav class="nav-resp-color" id="navbar-resp">
+		<a href="/">
+			<img decoding="async" src="/images/tardisLogo.png" class="img-logo" id="logo-resp">
+		</a>
+		<div class="nav__elements-resp color-menu-resp" id="menu-resp">
+			<a title="Toggle Navigation Menu" class="nav__elements__a-resp-bars" onclick="toogleBars()">
+				<svg class="icon icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
+			</a>
+			<a class="nav__elements__a-resp-select" href="/aemet" > AEMET</a>
+			<a class="nav__elements__a-resp" href="/app" > APP</a>
+			<a class="nav__elements__a-resp" href="/galeria"> GALERIA</a>
+			<a class="nav__elements__a-resp" href="/otro"> OTRO</a>
+		</div>
+		<a title="Toggle Navigation Menu" class="nav__elements__a-bars" onclick="toogleBars()">
+			<svg class="icon icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+		</a>	
+	</nav>
+
+	<!-- Floating things -->
+	<div class="float-div" id="float-div-butts">
+		<button class="float-button-tiempo" id="float-butt-cielo" onclick="manageFloatTime('horariaDataCielo','icon-cielo')">
+			<svg class="icon icon-color" id="icon-cielo"alt="UNOO" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M122.4 1.2C127.6-.9 133.4-.2 137.9 3l70.3 50.3L278.5 3c4.5-3.2 10.3-3.9 15.4-1.8s8.8 6.7 9.7 12.2l14.1 85.3L403 112.8c5.4 .9 10.1 4.6 12.2 9.7s1.4 10.9-1.8 15.4l-38.8 54.3c-2.2-.1-4.3-.2-6.5-.2c-23.2 0-45 6.2-63.8 17c.1-12.5-2.2-25.3-7.3-37.6c-20.3-49-76.4-72.2-125.4-52s-72.2 76.4-52 125.4c18.3 44.3 66 67.5 111.1 56.6c-36.3 18.2-62.8 53.3-69.1 94.9l-23.6 16.9c-4.5 3.2-10.3 3.9-15.4 1.8s-8.8-6.7-9.7-12.2L98.7 317.7 13.4 303.6c-5.5-.9-10.1-4.6-12.2-9.7S-.2 282.9 3 278.5l50.3-70.3L3 137.9c-3.2-4.5-3.9-10.3-1.8-15.4s6.7-8.8 12.2-9.7L98.7 98.7l14.1-85.3c.9-5.5 4.6-10.1 9.7-12.2zM149 232.7c-13.5-32.7 2-70.1 34.6-83.6s70.1 2 83.6 34.6s-2 70.1-34.6 83.6s-70.1-2-83.6-34.6zM639.9 431.9c0 44.2-35.8 80-80 80H288c-53 0-96-43-96-96c0-47.6 34.6-87 80-94.6l0-1.3c0-53 43-96 96-96c34.9 0 65.4 18.6 82.2 46.4c13-9.1 28.8-14.4 45.8-14.4c44.2 0 80 35.8 80 80c0 5.9-.6 11.7-1.9 17.2c37.4 6.7 65.8 39.4 65.8 78.7z"/></svg>
+		</button>
+		<button class="float-button-tiempo" id="float-butt-precip" onclick="manageFloatTime('horariaDataPrecip','icon-precip')">
+			<svg class="icon icon-color" id="icon-precip" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 320c-53 0-96-43-96-96c0-42.5 27.6-78.6 65.9-91.2C64.7 126.1 64 119.1 64 112C64 50.1 114.1 0 176 0c43.1 0 80.5 24.3 99.2 60c14.7-17.1 36.5-28 60.8-28c44.2 0 80 35.8 80 80c0 5.5-.6 10.8-1.6 16c.5 0 1.1 0 1.6 0c53 0 96 43 96 96s-43 96-96 96H96zm-6.8 52c1.3-2.5 3.9-4 6.8-4s5.4 1.5 6.8 4l35.1 64.6c4.1 7.5 6.2 15.8 6.2 24.3v3c0 26.5-21.5 48-48 48s-48-21.5-48-48v-3c0-8.5 2.1-16.9 6.2-24.3L89.2 372zm160 0c1.3-2.5 3.9-4 6.8-4s5.4 1.5 6.8 4l35.1 64.6c4.1 7.5 6.2 15.8 6.2 24.3v3c0 26.5-21.5 48-48 48s-48-21.5-48-48v-3c0-8.5 2.1-16.9 6.2-24.3L249.2 372zm124.9 64.6L409.2 372c1.3-2.5 3.9-4 6.8-4s5.4 1.5 6.8 4l35.1 64.6c4.1 7.5 6.2 15.8 6.2 24.3v3c0 26.5-21.5 48-48 48s-48-21.5-48-48v-3c0-8.5 2.1-16.9 6.2-24.3z"/></svg>		
+		</button>
+		<button class="float-button-tiempo" id="float-butt-temp" onclick="manageFloatTime('horariaDataTemp','icon-temp')">
+			<svg class="icon icon-color" id="icon-temp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M160 64c-26.5 0-48 21.5-48 48V276.5c0 17.3-7.1 31.9-15.3 42.5C86.2 332.6 80 349.5 80 368c0 44.2 35.8 80 80 80s80-35.8 80-80c0-18.5-6.2-35.4-16.7-48.9c-8.2-10.6-15.3-25.2-15.3-42.5V112c0-26.5-21.5-48-48-48zM48 112C48 50.2 98.1 0 160 0s112 50.1 112 112V276.5c0 .1 .1 .3 .2 .6c.2 .6 .8 1.6 1.7 2.8c18.9 24.4 30.1 55 30.1 88.1c0 79.5-64.5 144-144 144S16 447.5 16 368c0-33.2 11.2-63.8 30.1-88.1c.9-1.2 1.5-2.2 1.7-2.8c.1-.3 .2-.5 .2-.6V112zM208 368c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-20.9 13.4-38.7 32-45.3V152c0-8.8 7.2-16 16-16s16 7.2 16 16V322.7c18.6 6.6 32 24.4 32 45.3z"/></svg>
+		</button>
+		<button class="float-button-tiempo" id="float-butt-viento" onclick="manageFloatTime('horariaDataViento','icon-viento')">
+			<svg class="icon icon-color" id="icon-viento" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c0 17.7 14.3 32 32 32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H352c53 0 96-43 96-96s-43-96-96-96H320c-17.7 0-32 14.3-32 32zm64 352c0 17.7 14.3 32 32 32h32c53 0 96-43 96-96s-43-96-96-96H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H384c-17.7 0-32 14.3-32 32zM128 512h32c53 0 96-43 96-96s-43-96-96-96H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H160c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32 14.3-32 32s14.3 32 32 32z"/></svg>
+		</button>
+		<button class="float-button-tiempo" id="float-butt-humedad" onclick="manageFloatTime('horariaDataHumedad','icon-humedad')">
+			<svg class="icon icon-color" id="icon-humedad" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191.1 0h1.8c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192zM96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112c8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 0-80-35.8-80-80z"/><text class="icon" style="fill:black">%</text></svg>		
+		</button>
+		<button class="float-button-tiempo" id="float-butt-nieve" onclick="manageFloatTime('horariaDataNieve','icon-nieve')">
+			<svg class="icon icon-color" id="icon-nieve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 0c17.7 0 32 14.3 32 32V62.1l15-15c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-49 49v70.3l61.4-35.8 17.7-66.1c3.4-12.8 16.6-20.4 29.4-17s20.4 16.6 17 29.4l-5.2 19.3 23.6-13.8c15.3-8.9 34.9-3.7 43.8 11.5s3.7 34.9-11.5 43.8l-25.3 14.8 21.7 5.8c12.8 3.4 20.4 16.6 17 29.4s-16.6 20.4-29.4 17l-67.7-18.1L287.5 256l60.9 35.5 67.7-18.1c12.8-3.4 26 4.2 29.4 17s-4.2 26-17 29.4l-21.7 5.8 25.3 14.8c15.3 8.9 20.4 28.5 11.5 43.8s-28.5 20.4-43.8 11.5l-23.6-13.8 5.2 19.3c3.4 12.8-4.2 26-17 29.4s-26-4.2-29.4-17l-17.7-66.1L256 311.7v70.3l49 49c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-15-15V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V449.9l-15 15c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l49-49V311.7l-61.4 35.8-17.7 66.1c-3.4 12.8-16.6 20.4-29.4 17s-20.4-16.6-17-29.4l5.2-19.3L48.1 395.6c-15.3 8.9-34.9 3.7-43.8-11.5s-3.7-34.9 11.5-43.8l25.3-14.8-21.7-5.8c-12.8-3.4-20.4-16.6-17-29.4s16.6-20.4 29.4-17l67.7 18.1L160.5 256 99.6 220.5 31.9 238.6c-12.8 3.4-26-4.2-29.4-17s4.2-26 17-29.4l21.7-5.8L15.9 171.6C.6 162.7-4.5 143.1 4.4 127.9s28.5-20.4 43.8-11.5l23.6 13.8-5.2-19.3c-3.4-12.8 4.2-26 17-29.4s26 4.2 29.4 17l17.7 66.1L192 200.3V129.9L143 81c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l15 15V32c0-17.7 14.3-32 32-32z"/></svg>
+		</button>
+	</div>
+	<button class="float-main-button" id="float-butt-tiempo" onclick="manageFloat('float-div-butts')">
+		<svg id="bars-show" class="icon icon-color bars-show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z"/></svg>		<svg id="bars-hide" class="icon icon-color bars-hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
+
+	</button>
+
+	<!-- Notas -->
+	<div class="page-one" id="API">
+        <p id="response">Falta responsive movil</p>
+	</div>
+
+
+	<!-- Mostrar si hay mas de un municipio encontrado -->
+    <div class="page" id="Encontrados">	
+		<h2 class="title-tiempo">Encontrados:</h2>
+		<div class="flex-api">
+			<div class="findedList" id="findedList">
+			</div>
+		</div>
+	</div>
+
+	<!-- Resumen munucupio -->
+	<div class="page" id="datosMun">
+		<div class="flex-api">
+			<h2 id="titleMun"></h2>
+			<div class="tiempo-api" id="dia0">
+				<h3 id="dia0_fecha" class="hor__fecha"></h3>
+				<div class="hor__timesimple-cont">
+					<div id="dia0_manana" class="hor__timesimple">
+						<img id="dia0_manana-img" src="/images/time/image_11.png"></img>
+						<h4 id="dia0_manana_temp">max°C/min°C</h4>
+						<h4 id="dia0_manana_prec">precip 0-12</h4>
+						<h4 id="dia0_manana_vien">viento 0-12</h4>
+					</div>
+					<div id="dia0_tarde" class="hor__timesimple">
+						<img id="dia0_tarde-img" src="/images/time/image_11.png"></img>
+						<h4 id="dia0_tarde_temp">max°C/min°C</h4>
+						<h4 id="dia0_tarde_prec">precip 12-24</h4>
+						<h4 id="dia0_tarde_vien">viento 12-24</h4>
+					</div>
+				</div>
+			</div>
+			<div class="tiempo-api" id="dia1">
+				<h3 id="dia1_fecha" class="hor__fecha"></h3>
+				<div class="hor__timesimple-cont">
+					<div id="dia1_manana" class="hor__timesimple">
+						<img id="dia1_manana-img" src="/images/time/image_11.png"></img>
+						<h4 id="dia1_manana_temp">max°C/min°C</h4>
+						<h4 id="dia1_manana_prec">precip 0-12</h4>
+						<h4 id="dia1_manana_vien">viento 0-12</h4>
+					</div>
+					<div id="dia1_tarde" class="hor__timesimple">
+						<img id="dia1_tarde-img" src="/images/time/image_11.png"></img>
+						<h4 id="dia1_tarde_temp">max°C/min°C</h4>
+						<h4 id="dia1_tarde_prec">precip 12-24</h4>
+						<h4 id="dia1_tarde_vien">viento 12-24</h4>
+					</div>
+				</div>
+			</div>
+			<div class="tiempo-api" id="dia2">
+				<h3 id="dia2_fecha" class="hor__fecha"></h3>
+				<div class="hor__timesimple-cont">
+					<div id="dia2_manana" class="hor__timesimple">
+						<img id="dia2_manana-img" src="/images/time/image_11.png"></img>
+						<h4 id="dia2_manana_temp">max°C/min°C</h4>
+						<h4 id="dia2_manana_prec">precip 0-12</h4>
+						<h4 id="dia2_manana_vien">viento 0-12</h4>
+					</div>
+					<div id="dia2_tarde" class="hor__timesimple">
+						<img id="dia2_tarde-img" src="/images/time/image_11.png"></img>
+						<h4 id="dia2_tarde_temp">max°C/min°C</h4>
+						<h4 id="dia2_tarde_prec">precip 12-24</h4>
+						<h4 id="dia2_tarde_vien">viento 12-24</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<!-- Datos del cielo en pet horaria  -->
+	<div class="page" id="horariaDataCielo">
+		<h2 id="#cielo" class="title-tiempo">Estado del Cielo</h2>
+		<div class="flex-api" id="dia0_estadocielo"><h3 id="fecha-disp0" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia1_estadocielo"><h3 id="fecha-disp1" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia2_estadocielo"><h3 id="fecha-disp2" class="fecha-disp"></h3></div>
+	</div>
+
+	<!-- Datos del Precipitacion y Prob precipitacion en pet horaria  -->
+	<div class="page" id="horariaDataPrecip">
+		<h2 id="#precip" class="title-tiempo">Precipitaciones</h2>
+		<div class="flex-api" id="dia0_precip"><h3 id="fecha-disp0-precip" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia1_precip"><h3 id="fecha-disp1-precip" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia2_precip"><h3 id="fecha-disp2-precip" class="fecha-disp"></h3></div>
+	</div>
+
+	<!-- Datos del temp y Sens term en pet horaria  -->
+	<div class="page" id="horariaDataTemp">
+		<h2 id="#temp" class="title-tiempo">Temperatura </h2>
+		<div class="flex-api" id="dia0_temp_sens"><h3 id="fecha-disp0-temp" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia1_temp_sens"><h3 id="fecha-disp1-temp" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia2_temp_sens"><h3 id="fecha-disp2-temp" class="fecha-disp"></h3></div>
+	</div>
+
+	<!-- Datos del viento en pet horaria  -->
+	<div class="page" id="horariaDataViento">
+		<h2 id="#cielo" class="title-tiempo">Viento</h2>
+		<!-- <div class="flex-api" id="dia0_estadocielo"><h3 id="fecha-disp0" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia1_estadocielo"><h3 id="fecha-disp1" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia2_estadocielo"><h3 id="fecha-disp2" class="fecha-disp"></h3></div> -->
+	</div>
+
+	<!-- Datos del humedad en pet horaria  -->
+	<div class="page" id="horariaDataHumedad">
+		<h2 id="#cielo" class="title-tiempo">Humedad Relativa</h2>
+		<!-- <div class="flex-api" id="dia0_estadocielo"><h3 id="fecha-disp0" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia1_estadocielo"><h3 id="fecha-disp1" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia2_estadocielo"><h3 id="fecha-disp2" class="fecha-disp"></h3></div> -->
+	</div>
+
+	<!-- Datos del nieve en pet horaria  -->
+	<div class="page" id="horariaDataNieve">
+		<h2 id="#cielo" class="title-tiempo">Nieve y probabilidad</h2>
+		<!-- <div class="flex-api" id="dia0_estadocielo"><h3 id="fecha-disp0" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia1_estadocielo"><h3 id="fecha-disp1" class="fecha-disp"></h3></div>
+		<div class="flex-api" id="dia2_estadocielo"><h3 id="fecha-disp2" class="fecha-disp"></h3></div> -->
+	</div>
+
+
+
+	<footer class="page">
+		<h2>Contacto</h2>
+		<h3 id="email"></h3>
+		<div class="social fa-3x">
+			<a onclick="clickPhone()">
+				<svg class="icon-footer icon-color phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+			</a>
+			<a onclick="clickEmail()">
+				<svg class="icon-footer icon-color mail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+			</a>
+			<a onclick="clickLinkedin()" target="_blank" rel="noreferrer noopener nofollow ">
+				<svg class="icon-footer icon-color linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+			</a>
+		</div>
+		<hr class="color-white" style="margin:auto;width:40%">
+		<div class="credits">
+			<p>Hecho por Luis Zamora Ruiz 2022</p>
+			<a  class="round-up color-white" id="scrollToTop">
+				<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM385 215c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-71-71V392c0 13.3-10.7 24-24 24s-24-10.7-24-24V177.9l-71 71c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 103c9.4-9.4 24.6-9.4 33.9 0L385 215z"/></svg>
+			</a>
+		</div>
+	</footer>
+	<script src="/newtimey.js"></script>
+	<script src="/aemet/aemet_func.js"></script>
+    <script>
+		const urlParams = new URLSearchParams(window.location.search);
+		let idReq = "id28079"
+		if(urlParams.has('id')){
+			
+			idReq = urlParams.get("id");	
+			let num = parseInt(idReq.slice(2),10);
+
+			if(!isNaN(num)){
+				console.log("es numero, pet");
+				loadMunData(idReq);
+			}
+			else{
+				console.log("Maloso")
+			}
+		}else{
+				//Mira si hay mun encontrados, si los hay carga lista 
+				//Si no hay mira si hay id y la carga, si no hay carga por defecto Madrid
+				if(checkFinded()){
+					loadFinded();
+				}
+				else{
+					loadMunData("id28079");
+				}
+			
+			
+		}
+		
+
+        // let url = urlHoraria+"28079";
+        // getAemetData(url+"?api_key="+apiKey)
+	    //     .then(datos =>{
+		// 		if (datos.hasOwnProperty("ok") & datos.ok == false){
+		// 			console.log(datos);
+		// 			alert(datos.statusText);
+		// 		}
+        //         //document.getElementById("response").innerHTML = datos.origen.productor;
+        //     });
+    </script>
+</body>
+</html>

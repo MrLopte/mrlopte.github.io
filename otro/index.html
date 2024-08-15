@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body onload="hideBanner()">
 
-	<!--Top NavBar with responsive -->
 	<nav class="nav-transp" id="navbar">
 		<a href="/">
 			<img decoding="async" src="/images/tardisLogo.png" class="img-logo" id="logo">
@@ -23,7 +23,7 @@
 			<a class="nav__elements__a" href="/aemet" > AEMET</a>
 			<a class="nav__elements__a" href="/app" > APP</a>
 			<a class="nav__elements__a" href="/galeria" > GALERIA</a>
-			<a class="nav__elements__a" href="/otro"> OTRO</a>
+			<a class="nav__elements__a-select" href="/otro"> OTRO</a>
 		</div>
 	</nav>
 
@@ -38,114 +38,28 @@
 			<a class="nav__elements__a-resp" href="/aemet" > AEMET</a>
 			<a class="nav__elements__a-resp" href="/app" > APP</a>
 			<a class="nav__elements__a-resp" href="/galeria"> GALERIA</a>
-			<a class="nav__elements__a-resp" href="/otro"> OTRO</a>
+			<a class="nav__elements__a-resp-select" href="/otro"> OTRO</a>
 		</div>
 		<a title="Toggle Navigation Menu" class="nav__elements__a-bars" onclick="toogleBars()">
 			<svg class="icon icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
 		</a>	
 	</nav>
 
-	<!--Landing Page, navbar tranps and change to color on move-->
-	<div class="landing-page color-black" id="INICIO">
+
+	<div class="working-page color-black" id="INICIO">
 		<div>
-			<h1 id="main-title">Timey Wimey</h1>
+			<h1 id="main-title">Nada por aquí</h1>
 			<hr>
-			<p>Stuff</p>
+			<p>Nada por allá</p>
 		</div>
         
-        <div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-	</div>
-
-	<!--Section page 1 (AEMET)-->
-	<div class="page" id="AEMET">
-		<h2 class="main-h2">AEMET</h2>
-		<div class="card-row">
-			<div class="card">
-				<a  href="/aemet/tiempo.html" >
-					<img class="card__image" src="/images/madrid_granvia.jpg"></img>
-				</a>
-				<h2 class="card__title">Tiempo en Madrid</h2>
-			</div>
-			<div class="card">
-				<a  href="/aemet/showdata.html?urlQuery=/api/red/rayos/mapa" >
-					<img class="card__image" src="/images/img_rayos.PNG"></img>
-				</a>
-				<h2 class="card__title">Mapa de rayos</h2>
-			</div>
-			<div class="card">
-				<a  href="/aemet/mapa.html" >
-					<img class="card__image" src="/images/Mapa_Estaciones.JPG"></img>
-				</a>
-				<h2 class="card__title">Mapa de estaciones</h2>
-			</div>
-		</div>
-		<a class="anchor-button" href="/aemet" >AEMET API <i class="fa-solid fa-motorcycle"></i></a>
-	</div>
-
-	<!--Parallex image with custom divider-->
-	<div class="parallex-img" style="background-image: url('/images/paisajes/space_1.avif');">
-		<div class="custom-shape-divider-top-1657225119">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-		<div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-	</div>
-
-	<!--Section page 2 (APP)-->
-    <div class="page" id="APP">
-		<h2 class="main-h2">APP</h2>
-		<div class="flex-app">
-			<div class="flex-half__desc">
-				<h3 class="flex-title">Timey Wimey App</h3>
-				<p>Aplicación Android basada en datos abiertos de la AEMET</p>
-			</div>
-			<div class="">
-				<img class="phone-img" src="/images/smartphone_blank_480.png">
-			</div>
-		</div>
-		<a class="anchor-button" href="/app" >APP <i class="fa-solid fa-motorcycle"></i></a>
-	</div>
-
-	<!--Parallex image with custom divider-->
-	<div class="parallex-img" style="background-image: url('/images/paisajes/space_tardis.webp');">
-		<div class="custom-shape-divider-top-1657225119">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-		<div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-	</div>
-
-	<!--Section page 3 (GALERIA)-->
-	<div class="page" id="GALERIA">
-		<h2 class="main-h2">GALERIA</h2>
-		<div class="gallery grid-3-1-3">
-			<img src="/images/perretes/paberis_1_c.jpg"></img>
-			<img src="/images/perretes/paberis_8.jpg"></img>
-			<img src="/images/perretes/paberis_5.jpg"></img>
-			<img src="/images/perretes/oso_1.jpg"></img>
-			<img src="/images/perretes/oso_4.jpg"></img>
-			<img src="/images/perretes/bobo_3.jpg"></img>
-			<img src="/images/perretes/bobo_6.jpg"></img>
-		</div>
-		<a class="anchor-button" href="/galeria" >GALERIA <i class="fa-solid fa-motorcycle"></i></a>
-	</div>
-	
-	<!--Parallex image with custom divider-->
-	<div class="parallex-img" style="background-image: url('/images/dw_gallifrey.jpg');">
-		<div class="custom-shape-divider-top-1657225119">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-		<div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
 	</div>
 
 
-	<!--Pie de pagina -->
+
+
+
+
 	<footer class="page">
 		<h2>Contacto</h2>
 		<h3 id="email"></h3>

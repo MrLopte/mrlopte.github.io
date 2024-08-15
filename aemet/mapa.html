@@ -14,20 +14,20 @@
 </head>
 <body onload="hideBanner()">
 
-	<!--Top NavBar with responsive -->
-	<nav class="nav-transp" id="navbar">
+	<nav class="nav-color" id="navbar">
 		<a href="/">
 			<img decoding="async" src="/images/tardisLogo.png" class="img-logo" id="logo">
 		</a>
 		<div class="nav__elements">
-			<a class="nav__elements__a" href="/aemet" > AEMET</a>
+			<a class="nav__elements__a-select" href="/aemet" > AEMET</a>
 			<a class="nav__elements__a" href="/app" > APP</a>
 			<a class="nav__elements__a" href="/galeria" > GALERIA</a>
 			<a class="nav__elements__a" href="/otro"> OTRO</a>
 		</div>
+		<button class="button-tienda color-tardisBlue">Tienda</button>
 	</nav>
 
-	<nav class="nav-resp-transp" id="navbar-resp">
+	<nav class="nav-resp-color" id="navbar-resp">
 		<a href="/">
 			<img decoding="async" src="/images/tardisLogo.png" class="img-logo" id="logo-resp">
 		</a>
@@ -35,7 +35,7 @@
 			<a title="Toggle Navigation Menu" class="nav__elements__a-resp-bars" onclick="toogleBars()">
 				<svg class="icon icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
 			</a>
-			<a class="nav__elements__a-resp" href="/aemet" > AEMET</a>
+			<a class="nav__elements__a-resp-select" href="/aemet" > AEMET</a>
 			<a class="nav__elements__a-resp" href="/app" > APP</a>
 			<a class="nav__elements__a-resp" href="/galeria"> GALERIA</a>
 			<a class="nav__elements__a-resp" href="/otro"> OTRO</a>
@@ -45,107 +45,68 @@
 		</a>	
 	</nav>
 
-	<!--Landing Page, navbar tranps and change to color on move-->
-	<div class="landing-page color-black" id="INICIO">
-		<div>
-			<h1 id="main-title">Timey Wimey</h1>
-			<hr>
-			<p>Stuff</p>
-		</div>
-        
-        <div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-	</div>
 
-	<!--Section page 1 (AEMET)-->
-	<div class="page" id="AEMET">
-		<h2 class="main-h2">AEMET</h2>
-		<div class="card-row">
-			<div class="card">
-				<a  href="/aemet/tiempo.html" >
-					<img class="card__image" src="/images/madrid_granvia.jpg"></img>
+	<div class="page-one" id="API">
+		<div class="page-cont">
+			<div class="flex-api">
+				<div class="api-desc">
+					<h3>Estaciones</h3>
+					<p class="munCercaLabel"><b>Estacion mas cercana:</b></p>
+					<p id="munCerca">Municipio Cercano</p>
+				</div>
+				<div class="form-api" id="peticion" >
+					<div class="api-section">
+						<div class="api-coord">
+							<div class="inputmat-contain">
+								<input class="inputmat" type="text" id="latitud" name="fname" autocomplete="off" value="a" aria-labelledby="placeholder-fname">
+								<label class="inputmat-placeholder-text" for="latitud" id="placeholder-fname">
+									<div class="inputmat-text">Latitud</div>
+								</label>
+							</div>
+							<div class="inputmat-contain">
+								<input class="inputmat" type="text" id="longitud" name="fname" autocomplete="off" value="a" aria-labelledby="placeholder-fname">
+								<label class="inputmat-placeholder-text" for="longitud" id="placeholder-fname">
+									<div class="inputmat-text">Longitud</div>
+								</label>
+							</div>
+						</div>
+						<div class="api-rad">
+							<div class="inputmat-contain">
+								<input class="inputmat" type="text" id="rad" name="fname" autocomplete="off" value="a" aria-labelledby="placeholder-fname">
+								<label class="inputmat-placeholder-text" for="rad" id="placeholder-fname">
+									<div class="inputmat-text">Radio (km)</div>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="api-butt-loc" onclick="geolocateMe()" value="pet" >
+					<svg class="icon icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256c0 70.7 57.3 128 128 128s128-57.3 128-128s-57.3-128-128-128s-128 57.3-128 128zm128 80c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80z"/></svg>
 				</a>
-				<h2 class="card__title">Tiempo en Madrid</h2>
+				<button class="api-butt" onclick="goTo(document.getElementById('latitud').value,document.getElementById('longitud').value,document.getElementById('rad').value)" value="pet" >Buscar</button>
 			</div>
-			<div class="card">
-				<a  href="/aemet/showdata.html?urlQuery=/api/red/rayos/mapa" >
-					<img class="card__image" src="/images/img_rayos.PNG"></img>
-				</a>
-				<h2 class="card__title">Mapa de rayos</h2>
+			<div class="flex-api">
+				<div id="map"></div>
 			</div>
-			<div class="card">
-				<a  href="/aemet/mapa.html" >
-					<img class="card__image" src="/images/Mapa_Estaciones.JPG"></img>
-				</a>
-				<h2 class="card__title">Mapa de estaciones</h2>
-			</div>
-		</div>
-		<a class="anchor-button" href="/aemet" >AEMET API <i class="fa-solid fa-motorcycle"></i></a>
-	</div>
-
-	<!--Parallex image with custom divider-->
-	<div class="parallex-img" style="background-image: url('/images/paisajes/space_1.avif');">
-		<div class="custom-shape-divider-top-1657225119">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-		<div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-	</div>
-
-	<!--Section page 2 (APP)-->
-    <div class="page" id="APP">
-		<h2 class="main-h2">APP</h2>
-		<div class="flex-app">
-			<div class="flex-half__desc">
-				<h3 class="flex-title">Timey Wimey App</h3>
-				<p>Aplicación Android basada en datos abiertos de la AEMET</p>
-			</div>
-			<div class="">
-				<img class="phone-img" src="/images/smartphone_blank_480.png">
+			<div class="flex-api" style="flex-direction: column;">
+				<h3>Leyenda</h3>
+				<p class="map-leyenda"><img src="https://mt.google.com/vt/icon?psize=30&font=fonts/arialuni_t.ttf&color=ff304C13&name=icons/spotlight/spotlight-waypoint-a.png&ax=43&ay=48&text=%E2%80%A2"></img>Localización actual/simulada</p>
+				<p class="map-leyenda"><img src="https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1"></img> Estaciones cercanas (* Importantes)</p>
+				<p class="map-leyenda"><img src="https://mt.google.com/vt/icon?color=ff004C13&name=icons/spotlight/spotlight-waypoint-blue.png"></img> Localización a simular</p>
+				<p class="map-leyenda"><svg class="icon icon-color" style="fill:red !important"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M160 256C160 202.1 202.1 160 256 160C309 160 352 202.1 352 256C352 309 309 352 256 352C202.1 352 160 309 160 256zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+					 Radio de busqueda/ (Geo)Radio precisión</p>
+				<p class="map-leyenda"><svg class="icon icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256c0 70.7 57.3 128 128 128s128-57.3 128-128s-57.3-128-128-128s-128 57.3-128 128zm128 80c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80z"/></svg>
+					Geolocalizar</p>
 			</div>
 		</div>
-		<a class="anchor-button" href="/app" >APP <i class="fa-solid fa-motorcycle"></i></a>
-	</div>
 
-	<!--Parallex image with custom divider-->
-	<div class="parallex-img" style="background-image: url('/images/paisajes/space_tardis.webp');">
-		<div class="custom-shape-divider-top-1657225119">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-		<div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-	</div>
-
-	<!--Section page 3 (GALERIA)-->
-	<div class="page" id="GALERIA">
-		<h2 class="main-h2">GALERIA</h2>
-		<div class="gallery grid-3-1-3">
-			<img src="/images/perretes/paberis_1_c.jpg"></img>
-			<img src="/images/perretes/paberis_8.jpg"></img>
-			<img src="/images/perretes/paberis_5.jpg"></img>
-			<img src="/images/perretes/oso_1.jpg"></img>
-			<img src="/images/perretes/oso_4.jpg"></img>
-			<img src="/images/perretes/bobo_3.jpg"></img>
-			<img src="/images/perretes/bobo_6.jpg"></img>
-		</div>
-		<a class="anchor-button" href="/galeria" >GALERIA <i class="fa-solid fa-motorcycle"></i></a>
-	</div>
-	
-	<!--Parallex image with custom divider-->
-	<div class="parallex-img" style="background-image: url('/images/dw_gallifrey.jpg');">
-		<div class="custom-shape-divider-top-1657225119">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
-		<div class="custom-shape-divider-bottom-1657225197">
-			<object type="image/svg+xml" data="/images/sdpfe-papertear-all.svg"></object>
-        </div>
+		
 	</div>
 
 
-	<!--Pie de pagina -->
+
+
+
 	<footer class="page">
 		<h2>Contacto</h2>
 		<h3 id="email"></h3>
@@ -168,6 +129,15 @@
 			</a>
 		</div>
 	</footer>
+	<!--<script type="text/javascript" src="all_municipios.json"></script>-->
+
 	<script src="/newtimey.js"></script>
+	<script src="/aemet/aemet_func.js"></script>
+	<script src="/aemet/mapa.js"></script>
+
+	<script
+		async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAHUTK_Q3uMttasUJ9MdXEHkbQOJav4JQ&libraries=geometry&callback=initMap&v=3">
+	</script>
+	
 </body>
 </html>
