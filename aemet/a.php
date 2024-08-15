@@ -3,6 +3,7 @@
 <title>Pruebas AEMET</title>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 <style>
 	iframe{width:100%;heigth:1000;}
